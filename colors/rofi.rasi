@@ -1,0 +1,19 @@
+* {
+	primary: #00dfd3;
+	primary-transparent: #00dfd3aa;
+	secondary: #00a5f6;
+	secondary-transparent: #00a5f6aa;
+	complementary: #ec2d84;
+	complementary-transparent: #ec2d84aa;
+	primary-bg: #1e1f1f;
+	primary-bg-transparent: #1e1f1faa;
+	secondary-bg: #063230;
+	secondary-bg-transparent: #063230aa;
+	warning: #ff8c42;
+	warning-transparent: #ff8c42aa;
+	error: #f6404f;
+	error-transparent: #f6404faa;
+	disable: #008f83;
+	disable-transparent: #008f83aa;
+}
+

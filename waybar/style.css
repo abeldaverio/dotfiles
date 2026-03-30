@@ -1,0 +1,96 @@
+@import "../colors/waybar.css";
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "monospace";
+}
+
+window#waybar {
+    background: alpha(@primary-bg, 0.6);
+    color: @primary;
+    border-radius: 4px;
+    border: 0.3px solid @primary;
+}
+
+button:hover {
+    box-shadow: none; /* Remove predefined box-shadow */
+    text-shadow: none; /* Remove predefined text-shadow */
+    background: none; /* Remove predefined background color (white) */
+    transition: none; /* Disable predefined animations */
+}
+
+#custom-logo {
+    background-image: url("/home/abel/.config/waybar/logo.png");
+    font-size: 8px;
+    margin-left: 12px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#custom-separator {
+    font-size: 0px;
+    color: @secondary;
+    border: 0px solid @secondary;
+    background-color: @secondary;
+}
+
+#modules-right {
+    padding: 40px 0px 4px 0px;
+}
+
+#custom-battery.critical {
+    color: @error;
+}
+
+#custom-battery.low {
+    color: @warning;
+}
+
+#custom-battery.full {
+    color: @secondary;
+}
+
+#clock {
+    color: @complementary;
+}
+
+#workspaces {
+    padding: 4px 0px 4px 0px;
+    margin-bottom: 1px;
+}
+
+#workspaces button {
+    border-radius: 2px;
+    padding: 2px 6px 2px 6px;
+    color: @primary;
+}
+
+#workspaces button.active {
+    background-color: @primary-bg;
+    color: @secondary;
+    transition: all 1s;
+}
+
+#workspaces button:hover {
+    background-color: @primary;
+    color: @primary-bg;
+    transition: all 1s;
+}
+
+#custom-wifi.disconnected {
+    color: @disable;
+}
+
+#custom-notification.visible {
+    color: @secondary;
+}
+
+#custom-bluetooth.disable {
+    color: @disable;
+}
+
+#custom-bluetooth.connected {
+    color: @secondary;
+}

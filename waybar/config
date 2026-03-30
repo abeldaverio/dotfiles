@@ -1,0 +1,104 @@
+{
+  "layer": "bottom",
+  "position": "top",
+  "height": 24,
+  "margin": "11 11 1 11",
+  "spacing": 10,
+  "modules-left": ["custom/logo", "hyprland/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": ["idle_inhibitor", "cpu", "memory", "custom/battery","pulseaudio", "custom/bluetooth", "custom/wifi", "custom/notification", "custom/end"],
+  "custom/logo": {
+    "format": "   ",
+    "interval": "once",
+    "tooltip": false
+
+  },
+   "custom/end": {
+    "format": " ",
+    "interval": "once",
+    "tooltip": false
+  },
+  "hyprland/window": {
+    "format": "{title}"
+  },
+  "custom/wifi": {
+    "format": "{text}{icon} ",
+    "exec": "~/.config/customScripts/wifi_waybar/display.sh",
+    "on-click-right": "~/.config/customScripts/wifi_waybar/toggle.sh",
+    "return-type": "json",
+    "interval": 4
+  },
+  "custom/bluetooth": {
+    "format": "{text}{icon} ",
+    "format-icons": {
+        "enable": "󰂯",
+        "connected": "󰂯",
+        "disable": "󰂲",
+    },
+    "tooltip": true,
+    "exec": "~/.config/customScripts/bluetooth_menu.sh --status",
+    "return-type": "json",
+    "interval": 4,
+    "on-click": "~/.config/customScripts/bluetooth_menu.sh",
+    "on-click-right": "~/.config/customScripts/bluetooth_menu.sh --switch"
+  },
+  "cpu": {
+    "interval": 10,
+    "format": "{usage:2}%   "
+  },
+
+  "memory": {
+    "interval": 30,
+    "format": "{percentage}%   "
+  },
+  "custom/battery": {
+    "exec": "~/.config/customScripts/battery.sh",
+    "interval": 1,
+    "return-type": "json",
+    "format": "{percentage}% {text} "
+  },
+  "clock": {
+    "format-alt": "<span>{:%d/%m/%Y %H:%M}</span>",
+    "format": "<span>{:%H:%M}</span>",
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": {
+      "format": {
+        "months": "<span><b>{}</b></span>",
+        "today": "<span><b>{}</b></span>"
+      }
+    }
+  },
+  "pulseaudio": {
+    "format": "{volume}% <span size='small' rise='1000'>{icon}</span>  ",
+    "format-icons": {
+      "default": ["", "", "", "", "", "", ""],
+    },
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "pavucontrol",
+    "format-muted": "{volume}% <span size='small' rise='1000'></span>  "
+  },
+  "tray": {
+    "icon-size": 20,
+    "spacing": 10
+  },
+  "idle_inhibitor": {
+	"format": "{icon} ",
+	"format-icons": {
+		"activated": "󱚴",
+		"deactivated": "󰍁"
+	},
+   },
+   "custom/notification": {
+        "tooltip": true,
+        "format": " {icon}<span size='x-small' rise='7000'> {text}</span>",
+        "format-icons": {
+                "dnd-false": "",
+                "dnd-true": "󱏬",
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": ".config/customScripts/waybar_notifications.sh",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+    },
+}
