@@ -8,6 +8,7 @@ fi
 WAYBAR=""
 RASI="* {\n"
 CONF=""
+FOOT="[env]\n"
 
 generate_waybar() {
     WAYBAR="$WAYBAR""@define-color $1 #$2;""\n"
@@ -19,6 +20,10 @@ generate_rasi() {
 
 generate_conf() {
     CONF="$CONF""\$$1 = $2""\n"
+}
+
+generate_foot() {
+    FOOT="$FOOT""$1=$2""\n"
 }
 
 counter=0
@@ -36,9 +41,13 @@ while IFS='';read -r row_line; do
     generate_waybar "${line[0]}" "${line[1]}"
     generate_rasi   "${line[0]}" "${line[1]}"
     generate_conf   "${line[0]}" "${line[1]}"
+    generate_foot   "${line[0]}" "${line[1]}"
 
 done <$file
 
-echo -e "$WAYBAR"        > $(dirname $0)/waybar.css
-echo -e "$RASI""}""\n"   > $(dirname $0)/rofi.rasi
-echo -e "$CONF"          > $(dirname $0)/hypr.conf
+DIR=$(dirname $0)
+
+echo -e "$WAYBAR"        > $DIR/waybar.css
+echo -e "$RASI""}""\n"   > $DIR/rofi.rasi
+echo -e "$CONF"          > $DIR/hypr.conf
+echo -e "$FOOT"          > $DIR/foot.env

@@ -1,8 +1,16 @@
 if status is-interactive
-    # Commands to run in interactive sessions can go here
-end
-
+# Commands to run in interactive sessions can go here
+alias z="zed ."
 alias zed=zeditor
-export KUBECONFIG=/home/abel/.kube/config
-ln -s $HOME/.ghcup/bin/haskell-language-server-wrapper $HOME/.ghcup/bin/haskell-language-server
-export PATH="$HOME/.ghcup/ghc/9.8.4/bin:$HOME/.ghcup/bin:$PATH"
+end
+#Kic bin path
+export PATH="$PATH:/home/abel/repos/k8s_infra_minimal/bin/linux/"
+export RC="~/.config/fish/config.fish"
+#Kic alias
+alias kic=k8s_infra_cli
+#K8s infra path
+export KIC_WORKING_DIRECTORY="/home/abel/repos/k8s_infra_minimal"
+
+pyenv init - fish | source
+pyenv virtualenv-init - fish | source
+export PATH="$HOME/development/flutter/bin:$PATH"

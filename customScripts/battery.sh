@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-dir=/sys/class/power_supply/BAT1/
+dir=/sys/class/power_supply/BAT0/
 status=$(cat $dir/status)
 percent=$(cat $dir/capacity)
 
-if [[ $status == "Discharging" || $status == "Not charging" ]]; then
+if [[ $status == "Discharging" || $status == "Not charging" || $status == "Full" ]]; then
     battery_discharge=(󰁺 󰁺 󰁻 󰁻 󰁼 󰁼 󰁽 󰁽 󰁾 󰁾 󰁿 󰁿 󰂀 󰂀 󰂁 󰂁 󰂂 󰂂 󰁹 󰁹)
     icon=${battery_discharge[$(($percent * $((${#battery_discharge[@]} - 1)) / 100))]}
     if   [ $percent -lt 15 ]; then color=error

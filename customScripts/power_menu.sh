@@ -4,6 +4,7 @@ menu=$(printf "󰐥\tPower off\n󰑓\tReboot\n\tLock\n󰍃\tLog out" | rofi -
 
 case "$menu" in
 *"Power off") shutdown now ;;
+*"da") shutdown now ;;
 *"Reboot") reboot ;;
 *"Lock") pidof hyprlock || hyprlock ;;
 *"Log out") hyprctl dispatch exit ;;
